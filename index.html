@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CubeTimer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="authView" class="auth" hidden>
+  <form id="authForm" class="card">
+    <div class="logo big" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <h1>CubeTimer</h1>
+    <p id="authLead" class="muted">Log in to load your sessions and solves.</p>
+    <label>Username <input id="username" autocomplete="username" required></label>
+    <label>Password <input id="password" type="password" autocomplete="current-password" required></label>
+    <p id="authError" class="error" role="alert"></p>
+    <button class="primary" id="authSubmit">Log in</button>
+    <button type="button" class="link" id="authToggle">New here? Create an account</button>
+  </form>
+</section>
+
+<div id="appView" hidden>
+  <header class="top">
+    <div class="brand"><div class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong>CubeTimer</strong></div>
+    <div class="sessionbar">
+      <select id="sessionSelect" aria-label="Session"></select>
+      <button id="newBtn">New session</button>
+      <button id="renameBtn">Rename</button>
+      <button id="resetBtn">Clear solves</button>
+      <button id="deleteBtn" class="danger">Delete</button>
+    </div>
+    <div class="user"><span id="who"></span><button id="logoutBtn">Log out</button></div>
+  </header>
+
+  <main>
+    <section id="pad" class="pad idle" aria-label="Timer">
+      <p id="scramble" class="scramble"></p>
+      <div id="time" class="time">0.00</div>
+      <p id="hint" class="hint"></p>
+    </section>
+
+    <aside class="side">
+      <div class="card">
+        <h2 id="sessionTitle">Stats</h2>
+        <table id="stats"></table>
+        <p id="summary" class="muted"></p>
+      </div>
+      <div class="card">
+        <h2>Solves</h2>
+        <ol id="solveList" class="solves"></ol>
+        <p id="empty" class="muted" hidden>No solves yet. Hold space, release when green.</p>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<dialog id="newDialog">
+  <form id="newForm">
+    <h2>New session</h2>
+    <label>Name <input id="newName" maxlength="40" placeholder="e.g. 3x3 practice" required></label>
+    <label>Puzzle <select id="newPuzzle"></select></label>
+    <div class="row">
+      <button type="button" id="newCancel">Cancel</button>
+      <button class="primary">Create session</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
